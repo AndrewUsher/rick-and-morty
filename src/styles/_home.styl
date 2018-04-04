@@ -1,0 +1,28 @@
+.Home
+    background: url('../assets/banner.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 94vh;
+    position: relative;
+
+    &:after
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#000, 55%);
+
+    h2 
+        color: #f2f2f2;
+        font-family: Abel, sans-serif;
+        font-weight: normal;
+        max-width: 1200px;
+        position: relative;
+        top: -60px;
+        text-align: center;
+        font-size: 40px;
+        z-index: 2;
