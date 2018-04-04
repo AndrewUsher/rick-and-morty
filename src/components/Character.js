@@ -3,7 +3,7 @@ import React from 'react'
 const Character = ({ content }) => {
   return (
     <div className="Character">
-      <img src={content.image} />
+      <img alt={content.name} src={content.image} />
       <h3>{content.name}</h3>
       <p>
         <span className="title">Species</span>
