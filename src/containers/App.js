@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import Navbar from '../components/Navbar'
 import Characters from '../components/Characters'
 
@@ -18,27 +17,29 @@ export default class App extends Component {
     this.fetchCharacters()
   }
 
-  fetchCharacters (url = 'https://rickandmortyapi.com/api/character') {
-    const proxy = 'https://cors-anywhere.herokuapp.com/'
-    axios.get(`${proxy}https://rickandmortyapi.com/api/character`).then(response => {
-      const { results } = response.data
-      this.setState({
-        data: results
+  fetchCharacters () {
+    fetch(`https://rickandmortyapi.com/api/character/`)
+      .then(response => response.json())
+      .then(data => {
+        const { results } = data
+        this.setState({
+          data: results
+        })
       })
-    })
   }
 
   nextPage (pageNumber) {
-    const proxy = 'https://cors-anywhere.herokuapp.com/'
-    axios.get(`${proxy}https://rickandmortyapi.com/api/character?page=${pageNumber}`).then(response => {
-      const { results } = response.data
-      this.setState(prevState => {
-        return {
-          data: prevState.data.concat(results),
-          pageNumber: prevState.pageNumber + 1
-        }
+    fetch(`https://rickandmortyapi.com/api/character?page=${pageNumber}`)
+      .then(response => response.json())
+      .then(data => {
+        const { results } = data
+        this.setState(prevState => {
+          return {
+            data: prevState.data.concat(results),
+            pageNumber: prevState.pageNumber + 1
+          }
+        })
       })
-    })
   }
 
   render () {
