@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {PropogateLoader } from 'react-spinners'
+import { PropogateLoader } from 'react-spinners'
 import Episode from './Episode'
 class Episodes extends Component {
   constructor (props) {
@@ -47,7 +47,7 @@ class Episodes extends Component {
       output = (
         <div className="List-Container">
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
-          <p>Nothing here yet</p>
+          <PropogateLoader size={25} />
         </div>
       )
     } else {
