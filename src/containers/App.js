@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
+import Loadmang from '../components/Loadmang'
 import Home from '../components/Home'
 import Navbar from '../components/Navbar'
-import Characters from '../components/Characters'
-import Locations from '../components/Locations'
-import Episodes from '../components/Episodes'
+
+const Characters = Loadmang(() => import('../components/Characters').then(mod => mod.default))
+const Locations = Loadmang(() => import('../components/Locations'))
+const Episodes = Loadmang(() => import('../components/Episodes'))
 
 export default class App extends Component {
   render () {
