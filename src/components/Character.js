@@ -2,7 +2,7 @@ import React from 'react'
 
 const Character = ({ content }) => {
   return (
-    <div className="Character">
+    <div className="List-Item">
       <img alt={content.name} src={content.image} />
       <h3>{content.name}</h3>
       <p>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { PropogateLoader } from 'react-spinners'
-import Character from './Character'
-class Characters extends Component {
+import Location from './Location'
+
+class Locations extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -9,15 +10,15 @@ class Characters extends Component {
       pageNumber: 2
     }
 
-    this.fetchCharacters = this.fetchCharacters.bind(this)
+    this.fetchLocations = this.fetchLocations.bind(this)
   }
 
   componentDidMount () {
-    this.fetchCharacters()
+    this.fetchLocations()
   }
 
-  fetchCharacters () {
-    fetch(`https://rickandmortyapi.com/api/character/`)
+  fetchLocations () {
+    fetch(`https://rickandmortyapi.com/api/location/`)
       .then(response => response.json())
       .then(data => {
         const { results } = data
@@ -28,7 +29,7 @@ class Characters extends Component {
   }
 
   nextPage (pageNumber) {
-    fetch(`https://rickandmortyapi.com/api/character?page=${pageNumber}`)
+    fetch(`https://rickandmortyapi.com/api/location?page=${pageNumber}`)
       .then(response => response.json())
       .then(data => {
         const { results } = data
@@ -43,11 +44,11 @@ class Characters extends Component {
 
   render () {
     let output
-    if (!this.state.data) {
+    if (this.state.data === []) {
       output = (
         <div className="List-Container">
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
-          <p>Nothing here yet</p>
+          <PropogateLoader size={25} />
         </div>
       )
     } else {
@@ -55,7 +56,7 @@ class Characters extends Component {
         <div className="List-Container">
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
           <div className="List-Grid">
-            {this.state.data.map(character => <Character content={character} key={character.id} />)}
+            {this.state.data.map(location => <Location content={location} key={location.id} />)}
           </div>
           <button onClick={this.nextPage.bind(this, this.state.pageNumber)}>Show More</button>
         </div>
@@ -65,4 +66,4 @@ class Characters extends Component {
   }
 }
 
-export default Characters
+export default Locations

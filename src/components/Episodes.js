@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { PropogateLoader } from 'react-spinners'
-import Character from './Character'
-class Characters extends Component {
+import {PropogateLoader } from 'react-spinners'
+import Episode from './Episode'
+class Episodes extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -9,15 +9,15 @@ class Characters extends Component {
       pageNumber: 2
     }
 
-    this.fetchCharacters = this.fetchCharacters.bind(this)
+    this.fetchEpisodes = this.fetchEpisodes.bind(this)
   }
 
   componentDidMount () {
-    this.fetchCharacters()
+    this.fetchEpisodes()
   }
 
-  fetchCharacters () {
-    fetch(`https://rickandmortyapi.com/api/character/`)
+  fetchEpisodes () {
+    fetch(`https://rickandmortyapi.com/api/episode/`)
       .then(response => response.json())
       .then(data => {
         const { results } = data
@@ -28,7 +28,7 @@ class Characters extends Component {
   }
 
   nextPage (pageNumber) {
-    fetch(`https://rickandmortyapi.com/api/character?page=${pageNumber}`)
+    fetch(`https://rickandmortyapi.com/api/episode?page=${pageNumber}`)
       .then(response => response.json())
       .then(data => {
         const { results } = data
@@ -55,7 +55,7 @@ class Characters extends Component {
         <div className="List-Container">
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
           <div className="List-Grid">
-            {this.state.data.map(character => <Character content={character} key={character.id} />)}
+            {this.state.data.map(episode => <Episode content={episode} key={episode.id} />)}
           </div>
           <button onClick={this.nextPage.bind(this, this.state.pageNumber)}>Show More</button>
         </div>
@@ -65,4 +65,4 @@ class Characters extends Component {
   }
 }
 
-export default Characters
+export default Episodes
