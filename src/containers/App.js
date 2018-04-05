@@ -11,7 +11,7 @@ const Episodes = Loadmang(() => import('../components/Episodes'))
 export default class App extends Component {
   render () {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/rick-and-morty">
         <div>
           <Navbar />
           <Route exact path="/" component={Home} />
