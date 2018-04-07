@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import BackButton from './BackButton'
 import Loader from './Loader'
 
-class SingleCharacter extends Component {
+class SingleLocation extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -12,7 +12,7 @@ class SingleCharacter extends Component {
 
   componentDidMount () {
     const { id } = this.props.match.params
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
+    fetch(`https://rickandmortyapi.com/api/location/${id}`)
       .then(response => response.json())
       .then(data => {
         this.setState({ data })
@@ -20,29 +20,24 @@ class SingleCharacter extends Component {
   }
 
   render () {
-    const { gender, image, name, species, status } = this.state.data
+    const { name, type, dimension } = this.state.data
     let output
     if (!this.state.data) {
       output = <Loader />
     } else {
       output = (
-        <div className="Single-Info-Container">
-          <BackButton to="/characters" />
-          <div className="Single-Info">
-            <img src={image} />
+        <div className="Single-Info-Container Location">
+          <BackButton to="/locations" />
+          <div className="Single-Info Episode">
             <div className="Single-Info-Text">
               <h2>{name}</h2>
               <p>
-                <span className="title">Gender</span>
-                {gender}
+                <span className="title">Type</span>
+                {type}
               </p>
               <p>
-                <span className="title">Species</span>
-                {species}
-              </p>
-              <p>
-                <span className="title">Status</span>
-                {status}
+                <span className="title">Dimension</span>
+                {dimension}
               </p>
             </div>
           </div>
@@ -53,4 +48,4 @@ class SingleCharacter extends Component {
   }
 }
 
-export default SingleCharacter
+export default SingleLocation

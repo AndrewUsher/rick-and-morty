@@ -59,8 +59,8 @@ class Characters extends Component {
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
           <div className="List-Grid">
             {this.state.data.map(character => (
-              <Link to={'/characters/' + character.id}>
-                <Character content={character} key={character.id} />
+              <Link to={'/characters/' + character.id} key={character.id}>
+                <Character content={character} />
               </Link>
             ))}
           </div>

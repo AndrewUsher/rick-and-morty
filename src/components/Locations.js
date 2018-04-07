@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { PropogateLoader } from 'react-spinners'
 import Location from './Location'
 
@@ -56,7 +57,11 @@ class Locations extends Component {
         <div className="List-Container">
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
           <div className="List-Grid">
-            {this.state.data.map(location => <Location content={location} key={location.id} />)}
+            {this.state.data.map(location => (
+              <Link to={`/locations/${location.id}`} key={location.id}>
+                <Location content={location} />
+              </Link>
+            ))}
           </div>
           <button onClick={this.nextPage.bind(this, this.state.pageNumber)}>Show More</button>
         </div>

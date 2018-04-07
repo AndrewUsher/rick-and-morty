@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { PropogateLoader } from 'react-spinners'
+import { Link } from 'react-router-dom'
 import Episode from './Episode'
 class Episodes extends Component {
   constructor (props) {
@@ -55,7 +56,11 @@ class Episodes extends Component {
         <div className="List-Container">
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
           <div className="List-Grid">
-            {this.state.data.map(episode => <Episode content={episode} key={episode.id} />)}
+            {this.state.data.map(episode => (
+              <Link to={`/episodes/${episode.id}`} key={episode.id}>
+                <Episode content={episode} />
+              </Link>
+            ))}
           </div>
           <button onClick={this.nextPage.bind(this, this.state.pageNumber)}>Show More</button>
         </div>
