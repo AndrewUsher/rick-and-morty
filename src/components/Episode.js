@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Episode = ({ content }) => {
   return (
@@ -14,6 +15,14 @@ const Episode = ({ content }) => {
       </p>
     </div>
   )
+}
+
+Episode.propTypes = {
+  content: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    air_date: PropTypes.string.isRequired,
+    episode: PropTypes.string.isRequired
+  })
 }
 
 export default Episode

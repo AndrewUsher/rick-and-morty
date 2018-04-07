@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import BackButton from './BackButton'
 import Loader from './Loader'
 
@@ -46,6 +47,14 @@ class SingleLocation extends Component {
     }
     return <div>{output}</div>
   }
+}
+
+SingleLocation.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    })
+  })
 }
 
 export default SingleLocation

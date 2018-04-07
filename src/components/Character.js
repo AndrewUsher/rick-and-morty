@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Character = ({ content }) => {
   return (
@@ -27,6 +28,21 @@ const Character = ({ content }) => {
       </p>
     </div>
   )
+}
+
+Character.propTypes = {
+  content: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    species: PropTypes.string.isRequired,
+    origin: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    }),
+    location: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    }),
+    status: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired
+  })
 }
 
 export default Character

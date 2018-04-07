@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Location = ({ content }) => {
   return (
@@ -14,6 +15,14 @@ const Location = ({ content }) => {
       </p>
     </div>
   )
+}
+
+Location.propTypes = {
+  content: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    dimension: PropTypes.string.isRequired
+  })
 }
 
 export default Location
