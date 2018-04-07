@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { PropogateLoader } from 'react-spinners'
+import { Link } from 'react-router-dom'
 import Character from './Character'
 
 class Characters extends Component {
@@ -44,6 +45,7 @@ class Characters extends Component {
 
   render () {
     let output
+    console.log('op')
     if (!this.state.data) {
       output = (
         <div className="List-Container">
@@ -56,7 +58,11 @@ class Characters extends Component {
         <div className="List-Container">
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
           <div className="List-Grid">
-            {this.state.data.map(character => <Character content={character} key={character.id} />)}
+            {this.state.data.map(character => (
+              <Link to={'/characters/' + character.id}>
+                <Character content={character} key={character.id} />
+              </Link>
+            ))}
           </div>
           <button onClick={this.nextPage.bind(this, this.state.pageNumber)}>Show More</button>
         </div>
