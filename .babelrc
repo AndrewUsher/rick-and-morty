@@ -1,6 +1,15 @@
 {
-  "presets": ["env", "react"],
-  "plugins": [
-    "syntax-dynamic-import"
-  ]
+  "presets": [
+    "react",
+    [
+      "env",
+      {
+        "targets": "last 3 versions",
+        "loose": true,
+        "modules": false
+      }
+    ]
+  ],
+  "plugins": ["syntax-dynamic-import"],
+  "comments": false
 }
