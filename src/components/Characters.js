@@ -48,14 +48,14 @@ class Characters extends Component {
     console.log('op')
     if (!this.state.data) {
       output = (
-        <div className="List-Container">
+        <div className="List-Container Characters">
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
           <PropogateLoader size={25} />
         </div>
       )
     } else {
       output = (
-        <div className="List-Container">
+        <div className="List-Container Characters">
           <h2>Like what you see? Watch the entire show on Netflix!</h2>
           <div className="List-Grid">
             {this.state.data.map(character => (
