@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
-    "test": "cypress open"
+    "cypress:ui": "cypress open",
+    "cypress:cli": "cypress run"
   },
   "keywords": [],
   "author": "Andrew Usher",
