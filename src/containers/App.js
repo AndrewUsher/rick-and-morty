@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { HashRouter, Route } from 'react-router-dom'
-import Loadmang from '../components/Loadmang'
 import Home from '../components/Home'
+import Loadmang from '../components/Loadmang'
 import Navbar from '../components/Navbar'
 
 const Characters = Loadmang(() => import('../components/Characters'))

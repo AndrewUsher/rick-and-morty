@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { PropogateLoader } from 'react-spinners'
 import { Link } from 'react-router-dom'
+import { PropogateLoader } from 'react-spinners'
 import Episode from './Episode'
+
 class Episodes extends Component {
   constructor (props) {
     super(props)

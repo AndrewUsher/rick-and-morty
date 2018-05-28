@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { PropogateLoader } from 'react-spinners'
 import { Link } from 'react-router-dom'
+import { PropogateLoader } from 'react-spinners'
 import Character from './Character'
 
 class Characters extends Component {
