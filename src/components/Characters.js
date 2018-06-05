@@ -45,7 +45,6 @@ class Characters extends Component {
 
   render () {
     let output
-    console.log('op')
     if (!this.state.data) {
       output = (
         <div className="List-Container Characters">
