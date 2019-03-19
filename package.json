@@ -9,11 +9,13 @@
     "cypress:ui": "cypress open",
     "cypress:cli": "cypress run"
   },
-  "keywords": [],
+  "keywords": [
+
+  ],
   "author": "Andrew Usher",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
