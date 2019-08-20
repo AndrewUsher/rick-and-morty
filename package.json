@@ -37,7 +37,7 @@
     "prop-types": "^15.6.1",
     "react-router-dom": "^4.2.2",
     "style-loader": "^0.20.3",
-    "stylus": "^0.54.5",
+    "stylus": "^0.54.6",
     "stylus-loader": "^3.0.2",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
