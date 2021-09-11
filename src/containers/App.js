@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { HashRouter, Route } from 'react-router-dom'
 import Home from '../components/Home'
 import Loadmang from '../components/Loadmang'
@@ -30,6 +31,7 @@ export default class App extends Component {
             <Route exact path="/episodes/:id" component={SingleEpisode} />
           </div>
         </HashRouter>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     )
   }
