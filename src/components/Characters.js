@@ -20,8 +20,6 @@ const Characters = () => {
       {hasNextPage && <button onClick={fetchNextPage}>Show More</button>}
     </div>
   )
-
-  return null
 }
 
 export default Characters

@@ -37,6 +37,7 @@ Character.propTypes = {
     origin: PropTypes.shape({
       name: PropTypes.string.isRequired
     }),
+    image: PropTypes.string.isRequired,
     location: PropTypes.shape({
       name: PropTypes.string.isRequired
     }),

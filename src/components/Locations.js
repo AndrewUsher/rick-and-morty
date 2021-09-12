@@ -28,8 +28,6 @@ const Locations = () => {
       {hasNextPage && <button onClick={fetchNextPage}>Show More</button>}
     </div>
   )
-
-  return null
 }
 
 export default Locations

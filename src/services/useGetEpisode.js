@@ -1,4 +1,4 @@
-import { useQuery } from "react-query"
+import { useQuery } from 'react-query'
 
 const fetchEpisode = (id) => fetch(`https://rickandmortyapi.com/api/episode/${id}`)
   .then(response => response.json())

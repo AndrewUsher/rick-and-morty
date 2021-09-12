@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "react-query"
+import { useInfiniteQuery } from 'react-query'
 
 const fetchEpisodes = (page) => fetch(`https://rickandmortyapi.com/api/episode?page=${page}`)
   .then(response => response.json())

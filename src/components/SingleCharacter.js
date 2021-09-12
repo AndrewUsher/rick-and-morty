@@ -15,7 +15,7 @@ const SingleCharacter = (props) => {
     <div className="Single-Info-Container">
       <BackButton to="/characters" />
       <div className="Single-Info">
-        <img src={data.image} />
+        <img src={data.image} alt="" />
         <div className="Single-Info-Text">
           <h2>{data.name}</h2>
           <p>
