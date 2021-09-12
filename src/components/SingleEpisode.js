@@ -1,52 +1,34 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React from 'react'
+import { useGetEpisode } from '../services/useGetEpisode'
 import BackButton from './BackButton'
 import Loader from './Loader'
 
-class SingleEpisode extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      data: {}
-    }
+const SingleEpisode = (props) => {
+  const { data, isLoading } = useGetEpisode(props.match.params.id)
+
+  if (isLoading) {
+    return <Loader />
   }
 
-  componentDidMount () {
-    const { id } = this.props.match.params
-    fetch(`https://rickandmortyapi.com/api/episode/${id}`)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ data })
-      })
-  }
-
-  render () {
-    const { name, episode } = this.state.data
-    let output
-    if (!this.state.data) {
-      output = <Loader />
-    } else {
-      output = (
-        <div className="Single-Info-Container">
-          <BackButton to="/episodes" />
-          <div className="Single-Info Episode">
-            <div className="Single-Info-Text">
-              <h2>{name}</h2>
-              <p>
-                <span className="title">Air Date</span>
-                {this.state.data.air_date}
-              </p>
-              <p>
-                <span className="title">Episode Code</span>
-                {episode}
-              </p>
-            </div>
-          </div>
+  return (
+    <div className="Single-Info-Container">
+      <BackButton to="/episodes" />
+      <div className="Single-Info Episode">
+        <div className="Single-Info-Text">
+          <h2>{data.name}</h2>
+          <p>
+            <span className="title">Air Date</span>
+            {data.air_date}
+          </p>
+          <p>
+            <span className="title">Episode Code</span>
+            {data.episode}
+          </p>
         </div>
-      )
-    }
-    return <div>{output}</div>
-  }
+      </div>
+    </div>
+  )
 }
 
 SingleEpisode.propTypes = {
