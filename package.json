@@ -22,7 +22,6 @@
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "css-loader": "6.2.0",
     "cypress": "8.3.1",
-    "cz-conventional-changelog": "2.1.0",
     "eslint": "7.32.0",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "5.3.2",
@@ -42,8 +41,7 @@
     "react-dom": "^17.0.2",
     "react-loadable": "^5.3.1",
     "react-query": "3.23.2",
-    "react-spinners": "^0.2.6",
-    "styled-components": "^3.2.5"
+    "react-spinners": "^0.2.6"
   },
   "config": {
     "commitizen": {
