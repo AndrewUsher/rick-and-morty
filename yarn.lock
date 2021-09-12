@@ -2946,9 +2946,10 @@ eslint-plugin-react@^7.7.0:
     jsx-ast-utils "^2.0.1"
     prop-types "^15.6.0"
 
-eslint-plugin-standard@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-3.0.1.tgz#34d0c915b45edc6f010393c7eef3823b08565cf2"
+eslint-plugin-standard@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-4.1.0.tgz#0c3bf3a67e853f8bbbc580fb4945fbf16f41b7c5"
+  integrity sha512-ZL7+QRixjTR6/528YNGyDotyffm5OQst/sGxKDwGb9Uqs4In5Egi4+jbobhqJoyoCM6/7v/1A5fhQ7ScMtDjaQ==
 
 eslint-scope@5.1.1:
   version "5.1.1"
