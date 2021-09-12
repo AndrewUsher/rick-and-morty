@@ -1,57 +1,39 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React from 'react'
+import { useGetCharacter } from '../services/useGetCharacter'
 import BackButton from './BackButton'
 import Loader from './Loader'
 
-class SingleCharacter extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      data: {}
-    }
+const SingleCharacter = (props) => {
+  const { data, isLoading } = useGetCharacter(props.match.params.id)
+
+  if (isLoading) {
+    return <Loader />
   }
 
-  componentDidMount () {
-    const { id } = this.props.match.params
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ data })
-      })
-  }
-
-  render () {
-    const { gender, image, name, species, status } = this.state.data
-    let output
-    if (!this.state.data) {
-      output = <Loader />
-    } else {
-      output = (
-        <div className="Single-Info-Container">
-          <BackButton to="/characters" />
-          <div className="Single-Info">
-            <img src={image} />
-            <div className="Single-Info-Text">
-              <h2>{name}</h2>
-              <p>
-                <span className="title">Gender</span>
-                {gender}
-              </p>
-              <p>
-                <span className="title">Species</span>
-                {species}
-              </p>
-              <p>
-                <span className="title">Status</span>
-                {status}
-              </p>
-            </div>
-          </div>
+  return (
+    <div className="Single-Info-Container">
+      <BackButton to="/characters" />
+      <div className="Single-Info">
+        <img src={data.image} />
+        <div className="Single-Info-Text">
+          <h2>{data.name}</h2>
+          <p>
+            <span className="title">Gender</span>
+            {data.gender}
+          </p>
+          <p>
+            <span className="title">Species</span>
+            {data.species}
+          </p>
+          <p>
+            <span className="title">Status</span>
+            {data.status}
+          </p>
         </div>
-      )
-    }
-    return <div>{output}</div>
-  }
+      </div>
+    </div>
+  )
 }
 
 SingleCharacter.propTypes = {
