@@ -1,74 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { PropogateLoader } from 'react-spinners'
+import { PropagateLoader } from 'react-spinners'
+import { useGetEpisodes } from '../services/useGetEpisodes'
 import Episode from './Episode'
 
-class Episodes extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      data: [],
-      pageNumber: 2
-    }
+const Episodes = () => {
+  const { data, fetchNextPage, hasNextPage } = useGetEpisodes()
 
-    this.fetchEpisodes = this.fetchEpisodes.bind(this)
-  }
+  return (
+    <div className="List-Container Episodes">
+      <h2>Like what you see? Watch the entire show on Netflix!</h2>
+      <div className="List-Grid">
+        {data ? data.pages.map(page => page.results.map(episode => (
+          <Link to={`/episodes/${episode.id}`} key={episode.id}>
+            <Episode content={episode} />
+          </Link>
+        ))) : <PropagateLoader size={25} />}
+      </div>
+      {hasNextPage && <button onClick={fetchNextPage}>Show More</button>}
+    </div>
+  )
 
-  componentDidMount () {
-    this.fetchEpisodes()
-  }
-
-  fetchEpisodes () {
-    fetch(`https://rickandmortyapi.com/api/episode/`)
-      .then(response => response.json())
-      .then(data => {
-        const { results } = data
-        this.setState({
-          data: results
-        })
-      })
-  }
-
-  nextPage (pageNumber) {
-    fetch(`https://rickandmortyapi.com/api/episode?page=${pageNumber}`)
-      .then(response => response.json())
-      .then(data => {
-        const { results } = data
-        this.setState(prevState => {
-          return {
-            data: prevState.data.concat(results),
-            pageNumber: prevState.pageNumber + 1
-          }
-        })
-      })
-  }
-
-  render () {
-    let output
-    if (!this.state.data) {
-      output = (
-        <div className="List-Container Episodes">
-          <h2>Like what you see? Watch the entire show on Netflix!</h2>
-          <PropogateLoader size={25} />
-        </div>
-      )
-    } else {
-      output = (
-        <div className="List-Container Episodes">
-          <h2>Like what you see? Watch the entire show on Netflix!</h2>
-          <div className="List-Grid">
-            {this.state.data.map(episode => (
-              <Link to={`/episodes/${episode.id}`} key={episode.id}>
-                <Episode content={episode} />
-              </Link>
-            ))}
-          </div>
-          <button onClick={this.nextPage.bind(this, this.state.pageNumber)}>Show More</button>
-        </div>
-      )
-    }
-    return <div>{output}</div>
-  }
+  return null
 }
 
 export default Episodes
