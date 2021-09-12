@@ -1,74 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { PropogateLoader } from 'react-spinners'
+import { PropagateLoader } from 'react-spinners'
+import { useGetLocations } from '../services/useGetLocations'
 import Location from './Location'
 
-class Locations extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      data: [],
-      pageNumber: 2
-    }
+const Locations = () => {
+  const { data, fetchNextPage, hasNextPage } = useGetLocations()
 
-    this.fetchLocations = this.fetchLocations.bind(this)
+  if (!data) {
+    return (
+      <div className="List-Container Locations">
+        <h2>Like what you see? Watch the entire show on Netflix!</h2>
+      </div>
+    )
   }
 
-  componentDidMount () {
-    this.fetchLocations()
-  }
+  return (
+    <div className="List-Container Locations">
+      <h2>Like what you see? Watch the entire show on Netflix!</h2>
+      <div className="List-Grid">
+        {data ? data.pages.map(page => page.results.map(location => (
+          <Link to={`/locations/${location.id}`} key={location.id}>
+            <Location content={location} />
+          </Link>
+        ))) : <PropagateLoader size={25} />}
+      </div>
+      {hasNextPage && <button onClick={fetchNextPage}>Show More</button>}
+    </div>
+  )
 
-  fetchLocations () {
-    fetch(`https://rickandmortyapi.com/api/location/`)
-      .then(response => response.json())
-      .then(data => {
-        const { results } = data
-        this.setState({
-          data: results
-        })
-      })
-  }
-
-  nextPage (pageNumber) {
-    fetch(`https://rickandmortyapi.com/api/location?page=${pageNumber}`)
-      .then(response => response.json())
-      .then(data => {
-        const { results } = data
-        this.setState(prevState => {
-          return {
-            data: prevState.data.concat(results),
-            pageNumber: prevState.pageNumber + 1
-          }
-        })
-      })
-  }
-
-  render () {
-    let output
-    if (this.state.data === []) {
-      output = (
-        <div className="List-Container Locations">
-          <h2>Like what you see? Watch the entire show on Netflix!</h2>
-          <PropogateLoader size={25} />
-        </div>
-      )
-    } else {
-      output = (
-        <div className="List-Container Locations">
-          <h2>Like what you see? Watch the entire show on Netflix!</h2>
-          <div className="List-Grid">
-            {this.state.data.map(location => (
-              <Link to={`/locations/${location.id}`} key={location.id}>
-                <Location content={location} />
-              </Link>
-            ))}
-          </div>
-          <button onClick={this.nextPage.bind(this, this.state.pageNumber)}>Show More</button>
-        </div>
-      )
-    }
-    return <div>{output}</div>
-  }
+  return null
 }
 
 export default Locations
