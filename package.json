@@ -39,7 +39,6 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-loadable": "^5.3.1",
     "react-query": "3.24.4",
     "react-spinners": "^0.11.0"
   },
