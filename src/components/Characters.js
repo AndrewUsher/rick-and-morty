@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { PropagateLoader } from 'react-spinners'
+
 import { useGetCharacters } from '../services/useGetCharacters'
 import Character from './Character'
+import { LoadingSpinner } from './LoadingSpinner'
 
 const Characters = () => {
   const { data, fetchNextPage, hasNextPage } = useGetCharacters()
@@ -15,7 +16,7 @@ const Characters = () => {
           <Link to={`/characters/${character.id}`} key={character.id}>
             <Character content={character} />
           </Link>
-        ))) : <PropagateLoader size={25} />}
+        ))) : <LoadingSpinner />}
       </div>
       {hasNextPage && <button onClick={fetchNextPage}>Show More</button>}
     </div>

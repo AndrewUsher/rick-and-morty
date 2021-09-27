@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { PropagateLoader } from 'react-spinners'
 import { useGetEpisodes } from '../services/useGetEpisodes'
 import Episode from './Episode'
+import { LoadingSpinner } from './LoadingSpinner'
 
 const Episodes = () => {
   const { data, fetchNextPage, hasNextPage } = useGetEpisodes()
@@ -15,7 +15,7 @@ const Episodes = () => {
           <Link to={`/episodes/${episode.id}`} key={episode.id}>
             <Episode content={episode} />
           </Link>
-        ))) : <PropagateLoader size={25} />}
+        ))) : <LoadingSpinner />}
       </div>
       {hasNextPage && <button onClick={fetchNextPage}>Show More</button>}
     </div>

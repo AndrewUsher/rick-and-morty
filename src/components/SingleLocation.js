@@ -2,13 +2,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useGetLocation } from '../services/useGetLocation'
 import BackButton from './BackButton'
-import Loader from './Loader'
+import { LoadingSpinner } from './LoadingSpinner'
 
 const SingleLocation = (props) => {
   const { data, isLoading } = useGetLocation(props.match.params.id)
 
   if (isLoading) {
-    return <Loader />
+    return <LoadingSpinner />
   }
 
   return (

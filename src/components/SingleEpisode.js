@@ -2,13 +2,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useGetEpisode } from '../services/useGetEpisode'
 import BackButton from './BackButton'
-import Loader from './Loader'
+import { LoadingSpinner } from './LoadingSpinner'
 
 const SingleEpisode = (props) => {
   const { data, isLoading } = useGetEpisode(props.match.params.id)
 
   if (isLoading) {
-    return <Loader />
+    return <LoadingSpinner />
   }
 
   return (

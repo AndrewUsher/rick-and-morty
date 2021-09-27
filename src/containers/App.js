@@ -2,8 +2,8 @@ import React, { Suspense } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { HashRouter, Route } from 'react-router-dom'
-import { PropagateLoader } from 'react-spinners'
 import Home from '../components/Home'
+import { LoadingSpinner } from '../components/LoadingSpinner'
 import Navbar from '../components/Navbar'
 
 const Characters = React.lazy(() => import('../components/Characters'))
@@ -21,7 +21,7 @@ export function App () {
       <HashRouter>
         <div>
           <Navbar />
-          <Suspense fallback={<PropagateLoader size={25} />}>
+          <Suspense fallback={<LoadingSpinner />}>
             <Route exact path="/" component={Home} />
             <Route exact path="/characters" component={Characters} />
             <Route exact path="/locations" component={Locations} />

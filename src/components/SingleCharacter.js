@@ -2,13 +2,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useGetCharacter } from '../services/useGetCharacter'
 import BackButton from './BackButton'
-import Loader from './Loader'
+import { LoadingSpinner } from './LoadingSpinner'
 
 const SingleCharacter = (props) => {
   const { data, isLoading } = useGetCharacter(props.match.params.id)
 
   if (isLoading) {
-    return <Loader />
+    return <LoadingSpinner />
   }
 
   return (

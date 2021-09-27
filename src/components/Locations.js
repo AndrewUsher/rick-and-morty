@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { PropagateLoader } from 'react-spinners'
 import { useGetLocations } from '../services/useGetLocations'
+import { LoadingSpinner } from './LoadingSpinner'
 import Location from './Location'
 
 const Locations = () => {
@@ -23,7 +23,7 @@ const Locations = () => {
           <Link to={`/locations/${location.id}`} key={location.id}>
             <Location content={location} />
           </Link>
-        ))) : <PropagateLoader size={25} />}
+        ))) : <LoadingSpinner />}
       </div>
       {hasNextPage && <button onClick={fetchNextPage}>Show More</button>}
     </div>
