@@ -4,7 +4,7 @@ const fetchCharacters = (page) => fetch(`https://rickandmortyapi.com/api/charact
   .then(response => response.json())
 
 const useGetCharacters = () => {
-  return useInfiniteQuery('/episodes', ({ pageParam = 1 }) => fetchCharacters(pageParam), { getNextPageParam: lastPage => lastPage.info.next?.slice(-1) })
+  return useInfiniteQuery('/characters', ({ pageParam = 1 }) => fetchCharacters(pageParam), { getNextPageParam: lastPage => lastPage.info.next?.slice(-1) })
 }
 
 export { useGetCharacters }
